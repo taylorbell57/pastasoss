@@ -18,10 +18,10 @@ PWCPOS_CMD = 245.76
 # TODO: order 3 currently unsupport ATM. Will be support in the future: TBD
 REFERENCE_WAVECAL_MODELS = {
     "order1": str(files(__package__).joinpath(
-        "data/jwst_niriss_gr700xd_wavelength_model_order1.json"
+        "data/jwst_niriss_gr700xd_wavelength_model_order1.json")
     ),
     "order2": str(files(__package__).joinpath(
-        "data/jwst_niriss_gr700xd_wavelength_model_order2_002.json"
+        "data/jwst_niriss_gr700xd_wavelength_model_order2_002.json")
     ),
 }
 
