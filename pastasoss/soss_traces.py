@@ -7,7 +7,7 @@ from typing import Tuple
 
 import numpy as np
 from scipy.interpolate import interp1d
-from pkg_resources import resource_filename
+from importlib.resources import files
 
 from pastasoss.wavecal import get_wavecal_meta_for_spectral_order
 from pastasoss.wavecal import get_wavelengths
@@ -23,11 +23,11 @@ REFERENCE_TRACE_FILES = {
 }
 
 REFERENCE_WAVECAL_MODELS = {
-    "order1": resource_filename(
-        __name__, "data/jwst_niriss_gr700xd_wavelength_model_order1.json"
+    "order1": str(files(__package__).joinpath(
+        "data/jwst_niriss_gr700xd_wavelength_model_order1.json")
     ),
-    "order2": resource_filename(
-        __name__, "data/jwst_niriss_gr700xd_wavelength_model_order2_002.json"
+    "order2": str(files(__package__).joinpath(
+        "data/jwst_niriss_gr700xd_wavelength_model_order2_002.json")
     ),
 }
 
@@ -123,7 +123,7 @@ def get_reference_trace(
     --------
     >>> x, y, origin = get_reference_traces_positions('ref_filename.txt')
     """
-    filepath = resource_filename(__name__, f"data/{file}")
+    filepath = files(__package__).joinpath(f"data/{file}")
     traces = np.loadtxt(filepath)
     origin = traces[0]
     x = traces[1:, 0]
